@@ -1,21 +1,12 @@
-import csv
 import collections
 import numpy as np
+import utility
 
-data = []
 
-def readFile():
-    with open('DeathsCSV.csv') as fp: 
-        data = []
-        reader = csv.reader(fp)
-        for line in reader:
-            if not line[0] == 'Year':
-                data.append(line)
-        return data
 # 1 Which state has the most deaths in the year of 2016? (All causes)
 
 def state_with_most_deaths_in_2016():
-    reader = readFile()
+    reader = utility.readFile()
     state = ""
     currentMostDeaths = 0
     for line in reader:
