@@ -63,6 +63,9 @@ def state_with_most_deaths_by_kidneydisease_2005(): # samme struktur som opg 1 -
 #  Plot the increase year for year using matplotlib
 
 def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
+
+    # Finding out which state has had the biggest increase...
+
     deaths_2016 = []
     deaths_1999 = []
     increase_per_state = {}
@@ -77,6 +80,8 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
         increase_per_state[state] = increase
     state = collections.Counter.most_common(increase_per_state)[0][0]
 
+    # Given the state from above, get data from all years of it
+
     state_year = []
     state_change = []
     for line in reader:
@@ -85,6 +90,9 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
             state_change.append(line[4])
     state_change = list(reversed(state_change))
     state_year = list(reversed(state_year))
+
+    # plotting this shit, doesnt work though
+    # data isnt sorted on y axis
 
     xs = range(1, 19)
     ys = state_change
@@ -95,7 +103,6 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
     plt.tight_layout(pad=2.0)
     plt.bar(xs, ys)
     plt.show()
-    print("jsd")
 
 state_with_biggest_increase_of_alzheimers_1999_to_2016_plot()
 
