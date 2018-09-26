@@ -1,6 +1,7 @@
 import collections
 import numpy as np
 import utility
+import matplotlib as plt
 
 reader = utility.readFile() # data
 
@@ -44,7 +45,7 @@ def smallest_increase_from_1999_2016():
         state = deaths_1999[i]['state']
         increase = (deaths_2016[i]['deaths'] / deaths_1999[i]['deaths']) * 100 - 100
         increase_per_state[state] = increase
-    print(collections.Counter.most_common(increase_per_state)[0])
+    print(collections.Counter.most_common(increase_per_state)[-1])
     # print(increase_per_state)
 
 # 4 Which state has the most deaths caused by kidney disease in the year of 2005?
@@ -58,7 +59,12 @@ def state_with_most_deaths_by_kidneydisease_2005(): # samme struktur som opg 1 -
             state = line[3]
     print(state, current_most_deaths)
 
-state_with_most_deaths_by_kidneydisease_2005()
+# 5 Which state has had the biggest increase in the death of Alzheimers from 1999-2016?
+#  Plot the increase year for year using matplotlib
+
+def biggest_increase_of_alzheimers_1999_to_2016_plot():
+
+
 
   
 
