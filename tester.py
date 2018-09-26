@@ -1,7 +1,7 @@
 import collections
 import numpy as np
 import utility
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 reader = utility.readFile() # data
 
@@ -62,9 +62,42 @@ def state_with_most_deaths_by_kidneydisease_2005(): # samme struktur som opg 1 -
 # 5 Which state has had the biggest increase in the death of Alzheimers from 1999-2016?
 #  Plot the increase year for year using matplotlib
 
-def biggest_increase_of_alzheimers_1999_to_2016_plot():
+def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
+    deaths_2016 = []
+    deaths_1999 = []
+    increase_per_state = {}
+    for line in reader:
+        if line[3] != 'United States' and line[0] == '2016' and line[2] == "Alzheimer's disease":
+            deaths_2016.append({'state': line[3], 'deaths': int(line[4])})
+        if line[3] != 'United States' and line[0] == '1999' and line[2] == "Alzheimer's disease":
+            deaths_1999.append({'state': line[3], 'deaths': int(line[4])})
+    for i in range(0, len(deaths_1999)):
+        state = deaths_1999[i]['state']
+        increase = (deaths_2016[i]['deaths'] / deaths_1999[i]['deaths']) * 100 - 100
+        increase_per_state[state] = increase
+    state = collections.Counter.most_common(increase_per_state)[0][0]
 
+    state_year = []
+    state_change = []
+    for line in reader:
+        if line[3] == state and line[2] == "Alzheimer's disease":
+            state_year.append(line[0])
+            state_change.append(line[4])
+    state_change = list(reversed(state_change))
+    state_year = list(reversed(state_year))
 
+    xs = range(1, 19)
+    ys = state_change
+    plt.title(f"Change over Alzheimers in {state}", fontsize=16)
+    plt.xlabel("Years", fontsize=12)
+    plt.ylabel("Frequency of deaths", fontsize=12) 
+    plt.xticks(xs, state_year, rotation='vertical')
+    plt.tight_layout(pad=2.0)
+    plt.bar(xs, ys)
+    plt.show()
+    print("jsd")
+
+state_with_biggest_increase_of_alzheimers_1999_to_2016_plot()
 
   
 
