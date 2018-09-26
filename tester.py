@@ -49,7 +49,7 @@ def smallest_increase_from_1999_2016():
 
 # 4 Which state has the most deaths caused by kidney disease in the year of 2005?
 
-def state_with_most_deaths_by_kidneydisease_2005():
+def state_with_most_deaths_by_kidneydisease_2005(): # samme struktur som opg 1 - kan lave en generisk
     state = ""
     current_most_deaths = 0
     for line in reader:
