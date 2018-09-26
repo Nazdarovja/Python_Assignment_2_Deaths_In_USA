@@ -96,11 +96,10 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
 
     xs = range(1, 19)
     ys = state_change
-    plt.title(f"Change over Alzheimers in {state}", fontsize=16)
-    plt.xlabel("Years", fontsize=12)
-    plt.ylabel("Frequency of deaths", fontsize=12) 
+    plt.title(f"Change over Alzheimers in {state}")
+    plt.xlabel("Years")
+    plt.ylabel("Frequency of deaths") 
     plt.xticks(xs, state_year, rotation='vertical')
-    plt.tight_layout(pad=2.0)
     plt.bar(xs, ys)
     plt.show()
 
