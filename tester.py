@@ -47,8 +47,18 @@ def smallest_increase_from_1999_2016():
     print(collections.Counter.most_common(increase_per_state)[0])
     # print(increase_per_state)
 
-smallest_increase_from_1999_2016()
+# 4 Which state has the most deaths caused by kidney disease in the year of 2005?
 
+def state_with_most_deaths_by_kidneydisease_2005():
+    state = ""
+    current_most_deaths = 0
+    for line in reader:
+        if line[3] != 'United States' and line[0] == '2005' and line[2] == 'Kidney disease' and int(line[4]) > current_most_deaths:
+            current_most_deaths = int(line[4])
+            state = line[3]
+    print(state, current_most_deaths)
+
+state_with_most_deaths_by_kidneydisease_2005()
 
   
 
