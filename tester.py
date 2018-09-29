@@ -16,7 +16,7 @@ def state_with_most_deaths_in_2016():
             state = line[3] 
     print(state, current_most_deaths)
 
-def state_with_most_deaths_in_2016():
+def numpy_state_with_most_deaths_in_2016():
     
     arr = np.array(reader)
     list_of_states = arr[(arr[:,0] == "2016") & (arr[:,2] == "All causes") & (arr[:,3] != "United States")]  # find correct list of states
