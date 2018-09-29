@@ -16,20 +16,21 @@ def state_with_most_deaths_in_2016():
             state = line[3] 
     print(state, current_most_deaths)
 
-state_with_most_deaths_in_2016()
+def state_with_most_deaths_in_2016():
     
+    arr = np.array(reader)
+    list_of_states = arr[(arr[:,0] == "2016") & (arr[:,2] == "All causes") & (arr[:,3] != "United States")]  # find correct list of states
+    result_state = list_of_states[list_of_states[:,4] == np.max(list_of_states[:,4].astype(int)).astype(str)][0]       # fint largest deaths number in a states & find state with this death number
+    print(result_state[3] + ": "+result_state[4])
+
 
  # 2 Which state has the least deaths in the year of 2016? (All causes)
 
 def state_with_least_deaths_in_2016():
-    
-    state = ""
-    current_least_deaths = 100000000000
-    for line in reader:
-        if line[3] != 'United States' and line[0] == '2016' and line[2] == 'All causes' and int(line[4]) < current_least_deaths:
-            current_least_deaths = int(line[4])
-            state = line[3] 
-    print(state, current_least_deaths)
+    arr = np.array(reader)
+    list_of_states = arr[(arr[:,0] == "2016") & (arr[:,2] == "All causes") & (arr[:,3] != "United States")]  # find correct list of states
+    result_state = list_of_states[list_of_states[:,4] == np.min(list_of_states[:,4].astype(int)).astype(str)][0]       # fint largest deaths number in a states & find state with this death number
+    print(result_state[3] + ": "+result_state[4])
 
 
 # 3 Which state has had the smallest increase in deaths from 1999-2016? (All causes)
@@ -105,7 +106,13 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
     plt.bar(xs, ys)
     plt.show()
 
-#state_with_biggest_increase_of_alzheimers_1999_to_2016_plot()
+# state_with_biggest_increase_of_alzheimers_1999_to_2016_plot()
+
+state_with_most_deaths_in_2016()
+state_with_least_deaths_in_2016()
+smallest_increase_from_1999_2016()
+state_with_most_deaths_by_kidneydisease_2005()
+state_with_biggest_increase_of_alzheimers_1999_to_2016_plot()
 
   
 
