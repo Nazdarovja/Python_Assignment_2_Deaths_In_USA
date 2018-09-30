@@ -81,7 +81,7 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(data):
     
     plt.title(f"Death count from biggest % increase in deaths \nfrom Alzheimers in {state}")
     
-    plt.xlabel("Years", rotation='vertical')
+    plt.xlabel("Years")
     plt.ylabel("Deaths") 
     plt.xticks(rotation='vertical')
     
