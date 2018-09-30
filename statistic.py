@@ -51,7 +51,7 @@ def biggest_incr(array, f_year, t_year, cause='All causes'):
         index_max_incr = np.argmax(diff_death_per_state[diff_death_per_state > 0])
         
         # print result (for exercise)
-        print(f'state with biggest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].max()}) from {f_year} to {t_year} is {state_keys[index_max_incr]} by {cause}')
+        print(f'State with biggest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].max()}) from {f_year} to {t_year} is {state_keys[index_max_incr]} by {cause}')
 
         return state_keys[index_max_incr]
     except:
@@ -102,79 +102,54 @@ def smallest_incr(array, f_year, t_year, cause='All causes'):
         index_min_incr = np.argmin(diff_death_per_state[diff_death_per_state > 0])
 
         # print result (for exercise)
-        print(f'state with smallest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].min()}) from {f_year} to {t_year} is {state_keys[index_min_incr]} by {cause}')
+        print(f'State with smallest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].min()}) from {f_year} to {t_year} is {state_keys[index_min_incr]} by {cause}')
 
         return state_keys[index_min_incr]
     except:
         # print result (for exercise)
-        print(f'no state had an increase in death by {cause} from {f_year} to {t_year}')
+        print(f'No state had an increase in death by {cause} from {f_year} to {t_year}')
 
         return None
 
 
-def most_death(array, year, cause='All causes'):
+def state_with_most_deaths(arr, year, cause='All causes'):
     """
-        Returns the state with highest amount of deaths
-        Args:
-            numpy array: array with data
-            int: year
-            str: cause (default=All causes)
-        Returns:
-            str: state
+    Returns the state with highest amount of deaths
+    Args:
+        numpy array: array with data
+        int: year
+        str: cause (default=All causes)
+    Returns:
+        str: state
     """
+    # find correct list of states
+    list_of_states = arr[(arr[:,0] == str(year)) & (arr[:,2] == cause) & (arr[:,3] != "United States")]  
 
-    # creates an array of unique states
-    state_keys = np.unique(array[:,3])
-    # but without 'United States'
-    state_keys = state_keys[np.where(state_keys != 'United States')]
+    # fint largest deaths number in a states & find state with this death number
+    result_state = list_of_states[list_of_states[:,4] == np.max(list_of_states[:,4].astype(int)).astype(str)][0]       
+    
+    #print for assignment
+    print(f'The state with most deaths from {cause}, in {year} was {result_state[3]} with {result_state[4]} deaths')
+    
+    return result_state
 
-    # only consider the chosen year and cause 
-    mask = (array[:,0].astype(int) == year) & (array[:,2] == cause)
-
-    # create array with sum of death for every state
-    death_per_state = np.array([np.sum(array[mask & (array[:,3] == state)][:,4].astype(int)) for state in state_keys])
-
-    # index in state_keys with biggest sum of death
-    index_max = np.argmax(death_per_state)
-
-    # print result (for exercise)
-    print(f'state with most deaths of {death_per_state.max()} in {year} is {state_keys[index_max]} by {cause}')
-
-    return state_keys[index_max]
-
-
-def least_death(array, year, cause='All causes'):
+def state_with_least_deaths(arr, year, cause='All causes'):
     """
-        Returns the state with least amount of deaths
-        Args:
-            numpy array: array with data
-            int: year
-            str: cause (default=All causes)
-        Returns:
-            str: state
+    Returns the state with least amount of deaths
+    Args:
+        numpy array: array with data
+        int: year
+        str: cause (default=All causes)
+    Returns:
+        str: state
     """
-
-    # creates an array of unique states
-    state_keys = np.unique(array[:,3])
-    # but without 'United States'
-    state_keys = state_keys[np.where(state_keys != 'United States')]
-
-    # only consider the chosen year and cause
-    mask = (array[:,0].astype(int) == year) & (array[:,2] == cause)
-
-    # create array with sum of death for every state
-    death_per_state = np.array([np.sum(array[mask & (array[:,3] == state)][:,4].astype(int)) for state in state_keys])
-
-    # index in state_keys with biggest sum of death
-    index_min = np.argmin(death_per_state)
-
-    # print result (for exercise)
-    print(f'state with least deaths of {death_per_state.min()} in {year} is {state_keys[index_min]} by {cause}')
-
-    return state_keys[index_min]
-
-if __name__ == '__main__':
-    file_name = 'DeathsCSV.csv'
-    nparray = csv2array(file_name)
-
-    biggest_incr(nparray, 1999, 2016, "Kidney disease")
+    # find correct list of states
+    list_of_states = arr[(arr[:,0] == str(year)) & (arr[:,2] == cause) & (arr[:,3] != "United States")]  
+    
+    # fint largest deaths number in a states & find state with this death number
+    result_state = list_of_states[list_of_states[:,4] == np.min(list_of_states[:,4].astype(int)).astype(str)][0]      
+    
+    #print for assignment
+    print(f'The state with least deaths in 2016 was {result_state[3]} with {result_state[4]} deaths')
+    
+    return result_state

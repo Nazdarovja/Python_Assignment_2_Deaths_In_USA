@@ -1,5 +1,7 @@
 # Python_Assignment_2_Deaths_In_USA
 
+https://data.cdc.gov/api/views/bi63-dtpu/rows.csv?accessType=DOWNLOAD
+
 Group
 Foolish Supermarket - Alexander (cph-ah353), Stanislav (cph-sn186), Mathias B. (cph-mb493), Mikkel L. (cph-ml474)
 

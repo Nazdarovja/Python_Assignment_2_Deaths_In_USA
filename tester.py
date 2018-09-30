@@ -16,9 +16,8 @@ def state_with_most_deaths_in_2016():
             state = line[3] 
     print(state, current_most_deaths)
 
-def numpy_state_with_most_deaths_in_2016():
+def numpy_state_with_most_deaths_in_2016(arr):
     
-    arr = np.array(reader)
     list_of_states = arr[(arr[:,0] == "2016") & (arr[:,2] == "All causes") & (arr[:,3] != "United States")]  # find correct list of states
     result_state = list_of_states[list_of_states[:,4] == np.max(list_of_states[:,4].astype(int)).astype(str)][0]       # fint largest deaths number in a states & find state with this death number
     print(result_state[3] + ": "+result_state[4])
@@ -26,8 +25,7 @@ def numpy_state_with_most_deaths_in_2016():
 
  # 2 Which state has the least deaths in the year of 2016? (All causes)
 
-def state_with_least_deaths_in_2016():
-    arr = np.array(reader)
+def state_with_least_deaths_in_2016(arr):
     list_of_states = arr[(arr[:,0] == "2016") & (arr[:,2] == "All causes") & (arr[:,3] != "United States")]  # find correct list of states
     result_state = list_of_states[list_of_states[:,4] == np.min(list_of_states[:,4].astype(int)).astype(str)][0]       # fint largest deaths number in a states & find state with this death number
     print(result_state[3] + ": "+result_state[4])
@@ -62,10 +60,9 @@ def state_with_most_deaths_by_kidneydisease_2005(): # samme struktur som opg 1 -
             state = line[3]
     print(state, current_most_deaths)
 
-# 5 Which state has had the biggest increase in the death of Alzheimers from 1999-2016?
-#  Plot the increase year for year using matplotlib
 
-def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
+def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(not_numpy_data):
+
 
     # Finding out which state has had the biggest increase...
 
@@ -99,7 +96,8 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot():
 
     xs = range(1, 19)
     ys = state_change
-    plt.title(f"Change over Alzheimers in {state}")
+    plt.title(f"Biggest % change in deaths from\nAlzheimers in {state}")
+    
     plt.xlabel("Years")
     plt.ylabel("Frequency of deaths") 
     plt.xticks(xs, state_year, rotation='vertical')
