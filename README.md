@@ -13,7 +13,7 @@ This is a program written to interact with a specific dataset (see example below
 ## How to run (from CLI)
 In root of folder, in your terminal of choice, write:
 
-```python main.py <url> <filename>[optional]```
+```python main.py <url>```
 
 ### example:
 
