@@ -34,7 +34,7 @@ def line_deaths(array, state, f_year, t_year, cause='All causes'):
     plt.plot(years, deaths)
     plt.show()
 
-def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(arr):
+def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(data):
     
     """
         5) Which state has had the biggest increase in the death of Alzheimers from 1999-2016?
@@ -50,7 +50,7 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(arr):
     deaths_2016 = []
     deaths_1999 = []
     increase_per_state = {}
-    for line in arr:
+    for line in data:
         if line[3] != 'United States' and line[0] == '2016' and line[2] == "Alzheimer's disease":
             deaths_2016.append({'state': line[3], 'deaths': int(line[4])})
         if line[3] != 'United States' and line[0] == '1999' and line[2] == "Alzheimer's disease":
@@ -65,7 +65,7 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(arr):
 
     state_year = []
     state_change = []
-    for line in arr:
+    for line in data:
         if line[3] == state and line[2] == "Alzheimer's disease":
             state_year.append(line[0])
             state_change.append(line[4])
