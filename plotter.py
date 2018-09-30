@@ -29,9 +29,10 @@ def line_deaths(array, state, f_year, t_year, cause='All causes'):
     plt.title(f"Biggest increase in death count form \nAlzheimers in {state}")
     plt.xlabel("Years")
     plt.ylabel("Deaths")
-
+    plt.xticks(rotation='vertical')
+    
     # plot result
-    plt.plot(years, deaths)
+    plt.plot(years.astype(str), deaths)
     plt.show()
 
 def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(data):
@@ -75,14 +76,14 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(data):
     # plotting this shit, doesnt work though
     # data isnt sorted on y axis
 
-    xs = range(1,19)
+    xs = state_year
     ys = state_change
     
     plt.title(f"Death count from biggest % increase in deaths \nfrom Alzheimers in {state}")
     
     plt.xlabel("Years", rotation='vertical')
     plt.ylabel("Deaths") 
-    plt.xticks(xs, state_year, rotation='vertical')
+    plt.xticks(rotation='vertical')
     
     plt.bar(xs, ys)
     plt.show()
