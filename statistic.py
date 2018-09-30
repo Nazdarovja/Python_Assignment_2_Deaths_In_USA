@@ -51,7 +51,7 @@ def biggest_incr(array, f_year, t_year, cause='All causes'):
         index_max_incr = np.argmax(diff_death_per_state[diff_death_per_state > 0])
         
         # print result (for exercise)
-        print(f'state with smallest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].min()}) from {f_year} to {t_year} is {state_keys[index_max_incr]} by {cause}')
+        print(f'state with biggest increase of deaths ({diff_death_per_state[diff_death_per_state > 0].min()}) from {f_year} to {t_year} is {state_keys[index_max_incr]} by {cause}')
 
         return state_keys[index_max_incr]
     except:
