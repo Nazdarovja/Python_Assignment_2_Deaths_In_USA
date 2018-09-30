@@ -11,10 +11,8 @@ def main():
     statistic.least_death(nparray, 2016)
     statistic.smallest_incr(nparray, 1999, 2016)
     statistic.most_death(nparray, 2005, 'Kidney disease')
-    statistic.biggest_incr(nparray, 1999, 2016, "Alzheimer's disease")
-    # plot udviklingen af deaths fra New Work, da ingen stater havde en stigning i deaths
-    # i 1999-2016 med grunden "Alzheimer's disease"
-    plotter.line_deaths(nparray, 'New York', 1999, 2016, "Alzheimer's disease")
+    state_with_biggest_incr = statistic.biggest_incr(nparray, 1999, 2016, "Alzheimer's disease")
+    plotter.line_deaths(nparray, state_with_biggest_incr, 1999, 2016, "Alzheimer's disease")
 
 
 if __name__ == '__main__':
