@@ -68,19 +68,21 @@ def state_with_biggest_increase_of_alzheimers_1999_to_2016_plot(data):
     for line in data:
         if line[3] == state and line[2] == "Alzheimer's disease":
             state_year.append(line[0])
-            state_change.append(line[4])
+            state_change.append(int(line[4]))
     state_change = list(reversed(state_change))
     state_year = list(reversed(state_year))
 
     # plotting this shit, doesnt work though
     # data isnt sorted on y axis
 
-    xs = range(1, 19)
+    xs = range(1,19)
     ys = state_change
-    plt.title(f"Biggest % change in deaths from\nAlzheimers in {state}")
     
-    plt.xlabel("Years")
-    plt.ylabel("Frequency of deaths") 
+    plt.title(f"Death count from biggest % increase in deaths \nfrom Alzheimers in {state}")
+    
+    plt.xlabel("Years", rotation='vertical')
+    plt.ylabel("Deaths") 
     plt.xticks(xs, state_year, rotation='vertical')
+    
     plt.bar(xs, ys)
     plt.show()
