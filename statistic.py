@@ -40,7 +40,7 @@ def biggest_incr(array, f_year, t_year, cause='All causes'):
     t_death_per_state = np.array([np.sum(array[t_mask & (array[:,3] == state)][:,4].astype(int)) for state in state_keys])
 
     # calculating the differens in death in the interval for every state
-    diff_death_per_state = f_death_per_state - t_death_per_state
+    diff_death_per_state = t_death_per_state - f_death_per_state
 
     # only show states with a increase (since the question mentions an increase, only 'positive' numbers)
     state_keys = state_keys[diff_death_per_state > 0]
@@ -91,7 +91,7 @@ def smallest_incr(array, f_year, t_year, cause='All causes'):
     t_death_per_state = np.array([np.sum(array[t_mask & (array[:,3] == state)][:,4].astype(int)) for state in state_keys])
 
     # calculating the differens in death in the interval for every state
-    diff_death_per_state = f_death_per_state - t_death_per_state
+    diff_death_per_state = t_death_per_state - f_death_per_state
 
     # only show states with a increase (since the question mentions an increase, only 'positive' numbers)
     state_keys = state_keys[diff_death_per_state > 0]
